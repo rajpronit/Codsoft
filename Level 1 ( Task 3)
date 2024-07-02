@@ -1,0 +1,111 @@
+#HTML CODE
+******************************************************************************************************
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Basic Calculator</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="calculator">
+    <div class="display">0</div>
+    <div class="buttons">
+      <button onclick="clearDisplay()">C</button>
+      <button onclick="appendInput('/')">/</button>
+      <button onclick="appendInput('*')">x</button>
+      <button onclick="appendInput('-')">-</button>
+      <button onclick="appendInput('7')">7</button>
+      <button onclick="appendInput('8')">8</button>
+      <button onclick="appendInput('9')">9</button>
+      <button onclick="appendInput('+')">+</button>
+      <button onclick="appendInput('4')">4</button>
+      <button onclick="appendInput('5')">5</button>
+      <button onclick="appendInput('6')">6</button>
+      <button onclick="calculate()">=</button>
+      <button onclick="appendInput('1')">1</button>
+      <button onclick="appendInput('2')">2</button>
+      <button onclick="appendInput('3')">3</button>
+      <button onclick="appendInput('0')">0</button>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
+******************************************************************************************************
+#CSS CODE
+******************************************************************************************************
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: skyblue;
+  }
+  
+  .calculator {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 300px;
+  }
+  
+  .display {
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 2em;
+    text-align: right;
+    margin-bottom: 10px;
+  }
+  
+  .buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5px;
+  }
+  
+  button {
+    padding: 15px;
+    font-size: 1.5em;
+    border: none;
+    background-color: #e0e0e0;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #d0d0d0;
+  }
+******************************************************************************************************
+#JAVASCRIPT CODE
+******************************************************************************************************
+let display = document.querySelector('.display');
+
+function appendInput(value) {
+  if (display.textContent === '0') {
+    display.textContent = value;
+  } else {
+    display.textContent += value;
+  }
+}
+
+function clearDisplay() {
+  display.textContent = '0';
+}
+
+function calculate() {
+  try {
+    display.textContent = eval(display.textContent);
+  } catch (error) {
+    display.textContent = 'Error';
+  }
+}
+******************************************************************************************************
